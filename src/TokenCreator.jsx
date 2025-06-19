@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import algosdk from 'algosdk';
 
 export default function TokenCreator() {
@@ -13,10 +11,9 @@ export default function TokenCreator() {
   const [includeLogo, setIncludeLogo] = useState(false);
   const [lockSupply, setLockSupply] = useState(false);
 
-  const FEE_ADDRESS = 'YOUR_ALGORAND_ADDRESS_HERE';
-
+  const FEE_ADDRESS = 'YOUR_ALGORAND_ADDRESS_HERE'; // ← podmień na swój adres testnetowy
   const calculateFee = () => {
-    let fee = 10_000_000; // base: 10 ALGO
+    let fee = 10_000_000; // 10 ALGO
     if (includeLogo) fee += 10_000_000;
     if (lockSupply) fee += 10_000_000;
     return fee;
@@ -78,11 +75,11 @@ export default function TokenCreator() {
     <div className="max-w-xl mx-auto p-6 space-y-4">
       <h1 className="text-3xl font-bold text-center">Algorand Token Creator</h1>
 
-      <Input placeholder="Token Name" value={name} onChange={(e) => setName(e.target.value)} />
-      <Input placeholder="Symbol (Unit Name)" value={unitName} onChange={(e) => setUnitName(e.target.value)} />
-      <Input placeholder="Total Supply" value={supply} onChange={(e) => setSupply(e.target.value)} />
-      <Input placeholder="Decimals (e.g. 0, 6)" value={decimals} onChange={(e) => setDecimals(e.target.value)} />
-      <Input placeholder="Logo URL (optional)" value={url} onChange={(e) => setUrl(e.target.value)} disabled={!includeLogo} />
+      <input className="w-full p-2 border" placeholder="Token Name" value={name} onChange={(e) => setName(e.target.value)} />
+      <input className="w-full p-2 border" placeholder="Symbol (Unit Name)" value={unitName} onChange={(e) => setUnitName(e.target.value)} />
+      <input className="w-full p-2 border" placeholder="Total Supply" value={supply} onChange={(e) => setSupply(e.target.value)} />
+      <input className="w-full p-2 border" placeholder="Decimals (e.g. 0, 6)" value={decimals} onChange={(e) => setDecimals(e.target.value)} />
+      <input className="w-full p-2 border" placeholder="Logo URL (optional)" value={url} onChange={(e) => setUrl(e.target.value)} disabled={!includeLogo} />
 
       <label className="flex items-center gap-2">
         <input type="checkbox" checked={includeLogo} onChange={(e) => setIncludeLogo(e.target.checked)} />
@@ -94,9 +91,9 @@ export default function TokenCreator() {
         <span>Lock Supply (no further minting) (+10 ALGO)</span>
       </label>
 
-      <Button onClick={createToken}>
+      <button onClick={createToken} className="bg-blue-600 text-white px-4 py-2 rounded">
         Create Token ({calculateFee() / 1_000_000} ALGO)
-      </Button>
+      </button>
 
       <p className="text-center text-sm text-gray-700 whitespace-pre-line">{status}</p>
     </div>
