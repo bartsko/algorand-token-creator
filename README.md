@@ -1,12 +1,31 @@
-# React + Vite
+# 🪙 Algorand Token Creator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Webowa aplikacja do tworzenia własnych tokenów ASA (Algorand Standard Assets) z wykorzystaniem Pera Wallet i opłatą w ALGO za niestandardowe opcje.
 
-Currently, two official plugins are available:
+## ✨ Funkcje
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Tworzenie tokenów ASA na testnecie Algorand
+- Opcjonalne dodanie logo (URL)
+- Możliwość zablokowania podaży (brak możliwości mintowania)
+- Dynamiczna opłata (10 ALGO za podstawę, +10 ALGO za każdą opcję)
+- Połączenie z portfelem użytkownika przez Pera Wallet Connect
+- Frontend w React + Tailwind CSS + Vite
 
-## Expanding the ESLint configuration
+## 💸 Zasady opłat
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Opcja                      | Koszt  |
+|---------------------------|--------|
+| Utworzenie tokena         | 10 ALGO |
+| Dodanie logo (URL)        | +10 ALGO |
+| Zablokowanie podaży       | +10 ALGO |
+| **Maks. łączny koszt**    | **30 ALGO** |
+
+Opłata przesyłana jest na adres właściciela aplikacji przed wygenerowaniem tokena.
+
+## 🚀 Uruchomienie lokalne
+
+```bash
+git clone https://github.com/bartsko/algorand-token-creator.git
+cd algorand-token-creator
+npm install
+npm run dev
